@@ -1,0 +1,214 @@
+.dagger {
+   .side-menu {
+      @media (min-width: 1280px) {
+         &--collapsed {
+            &.side-menu--on-hover {
+               .side-menu {
+                  &__divider {
+                     color: color-mix(
+                        in oklab,
+                        var(--color-slate-500) 80%,
+                        transparent
+                     );
+                     &:before {
+                        opacity: 0;
+                     }
+                  }
+                  &__link {
+                     justify-content: normal;
+                     &__title {
+                        opacity: 1;
+                     }
+                     &__badge {
+                        opacity: 1;
+                     }
+                     &__chevron {
+                        opacity: 1;
+                     }
+                  }
+               }
+            }
+            .side-menu {
+               &__divider {
+                  height: calc(var(--spacing) * 5);
+                  position: relative;
+                  color: transparent;
+                  transition-property:
+                     color, background-color, border-color,
+                     text-decoration-color, fill, stroke, --tw-gradient-from,
+                     --tw-gradient-via, --tw-gradient-to;
+                  transition-duration: 100ms;
+                  &:before {
+                     content: "...";
+                     position: absolute;
+                     text-align: center;
+                     left: 0;
+                     right: 0;
+                     color: color-mix(
+                        in oklab,
+                        var(--color-slate-500) 80%,
+                        transparent
+                     );
+                     transition-property: opacity;
+                     transition-duration: 300ms;
+                  }
+               }
+               &__link {
+                  overflow: hidden;
+                  &__title {
+                     white-space: nowrap;
+                     opacity: 0;
+                     transition-property: opacity;
+                     transition-duration: 300ms;
+                  }
+                  &__badge {
+                     opacity: 0;
+                     transition-property: opacity;
+                     transition-duration: 300ms;
+                  }
+                  &__chevron {
+                     opacity: 0;
+                     transition-property: opacity;
+                     transition-duration: 300ms;
+                  }
+               }
+            }
+         }
+      }
+      &__divider {
+         white-space: nowrap;
+         font-size: var(--text-xs);
+         color: var(--color-slate-500);
+         margin-top: calc(var(--spacing) * 5);
+         margin-bottom: calc(var(--spacing) * 3);
+      }
+      &__link {
+         display: flex;
+         align-items: center;
+         margin-bottom: calc(var(--spacing) * 1);
+         border-radius: 0.6rem;
+         border: 1px solid transparent;
+         padding: calc(var(--spacing) * 3) calc(var(--spacing) * 3.5);
+         transition-property: all;
+         transition-timing-function: var(--ease-in);
+         transition-duration: 200ms;
+         &--active {
+            .side-menu__link__icon {
+               opacity: 100%;
+            }
+            .side-menu__link__title {
+               color: var(--color-primary-500);
+               font-weight: var(--font-weight-medium);
+            }
+         }
+         &__icon {
+            flex: none;
+            opacity: 80%;
+            stroke: var(--color-primary-500);
+            fill: color-mix(
+               in oklab,
+               var(--color-primary-500) 10%,
+               transparent
+            );
+         }
+         &__title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--color-slate-600);
+            margin-left: calc(var(--spacing) * 3);
+         }
+         &__badge {
+            min-width: 1.15rem;
+            height: 1.2rem;
+            padding: 0 calc(var(--spacing) * 2);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-xs);
+            margin-left: calc(var(--spacing) * 2.5);
+            font-weight: var(--font-weight-medium);
+            background-color: color-mix(
+               in oklab,
+               var(--color-primary-500) 15%,
+               transparent
+            );
+         }
+         &__chevron {
+            margin-left: auto;
+         }
+      }
+      ul.scrollable {
+         position: relative;
+         > li {
+            > .side-menu__link {
+               &--active {
+                  color: var(--color-white);
+                  background: linear-gradient(
+                     to right,
+                     color-mix(
+                        in oklab,
+                        var(--color-primary-500) 95%,
+                        transparent
+                     ),
+                     color-mix(
+                        in oklab,
+                        var(--color-primary-800) 95%,
+                        transparent
+                     )
+                  );
+                  border-color: white;
+                  box-shadow: 0px 2px 3px #0000000b;
+                  .side-menu__link__icon {
+                     stroke: var(--color-white);
+                     fill: color-mix(
+                        in oklab,
+                        var(--color-white) 10%,
+                        transparent
+                     );
+                  }
+                  .side-menu__link__title {
+                     color: var(--color-white);
+                  }
+                  .side-menu__link__badge {
+                     color: var(--color-white);
+                     background-color: color-mix(
+                        in oklab,
+                        var(--color-white) 15%,
+                        transparent
+                     );
+                  }
+               }
+               &--active-dropdown {
+                  margin-bottom: calc(var(--spacing) * 1.5);
+               }
+               &:hover:not(&--active) {
+                  background: color-mix(
+                     in oklab,
+                     var(--color-white) 80%,
+                     transparent
+                  );
+                  border-color: var(--color-slate-200) / 80%;
+                  box-shadow: 0px 2px 3px #0000000b;
+               }
+            }
+            ul {
+               padding: var(--spacing) 0;
+               background: var(--color-white);
+               border-radius: 0.6rem;
+               border: 1px solid var(--color-slate-200);
+               margin-bottom: calc(var(--spacing) * 2);
+               .side-menu__link {
+                  margin-bottom: 0;
+               }
+               ul {
+                  margin: 0px -1px;
+                  box-shadow: none;
+                  border: 1px solid var(--color-slate-200) / 80%;
+               }
+            }
+         }
+      }
+   }
+}

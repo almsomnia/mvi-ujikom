@@ -1,0 +1,106 @@
+<script setup lang="ts">
+const compactMenu = useCompactMenuStore()
+function setCompactMenu(val: boolean) {
+   compactMenu.setCompactMenu(val)
+}
+
+function toggleCompactMenu(event: MouseEvent) {
+   event.preventDefault()
+   setCompactMenu(!compactMenu.value)
+}
+
+const sideMenu = useSideMenuStore()
+</script>
+
+<template>
+   <div
+      :class="[
+         'from-primary-500 to-primary-800 fixed inset-x-0 top-0 z-10 mx-2.5 mt-2.5 flex h-[65px] rounded-[0.6rem] bg-gradient-to-r shadow-lg',
+         'before:absolute before:inset-x-0 before:-mt-2.5 before:h-2.5 before:backdrop-blur before:content-[\'\']',
+      ]"
+   >
+      <div
+         :class="[
+            'relative z-10 flex h-full flex-none items-center overflow-hidden px-5 duration-300 xl:-ml-2.5 xl:w-[275px] group-[.side-menu--collapsed]:xl:w-[100px] group-[.side-menu--collapsed.side-menu--on-hover]:xl:w-[275px] group-[.side-menu--collapsed.side-menu--on-hover]:xl:shadow-[6px_0_12px_-4px_#0000001f]',
+            'before:absolute before:right-0 before:hidden before:h-4/6 before:border-r before:border-dotted before:border-white/[0.15] before:content-[\'\'] before:xl:block before:group-[.side-menu--collapsed.side-menu--on-hover]:xl:hidden',
+            'after:from-primary-500 after:to-primary-800 after:absolute after:z-[-1] after:hidden after:h-full after:w-full after:bg-gradient-to-r after:bg-[length:100vw_65px] after:content-[\'\'] after:xl:block',
+         ]"
+         @mouseover.prevent="compactMenu.onHover = true"
+         @mouseleave.prevent="compactMenu.onHover = false"
+      >
+         <a
+            href=""
+            class="ml-2.5 hidden items-center transition-[margin] xl:flex group-[.side-menu--collapsed]:xl:ml-6 group-[.side-menu--collapsed.side-menu--on-hover]:xl:ml-2.5"
+         >
+            <div
+               class="transition-transform ease-in-out group-[.side-menu--collapsed.side-menu--on-hover]:xl:-rotate-180"
+            >
+               <div
+                  class="relative h-[18px] w-[18px] -rotate-45 [&_div]:bg-white"
+               >
+                  <div
+                     class="absolute inset-y-0 left-0 my-auto h-[75%] w-[21%] rounded-full opacity-50"
+                  ></div>
+                  <div
+                     class="absolute inset-0 m-auto h-[120%] w-[21%] rounded-full"
+                  ></div>
+                  <div
+                     class="absolute inset-y-0 right-0 my-auto h-[75%] w-[21%] rounded-full opacity-50"
+                  ></div>
+               </div>
+            </div>
+            <div
+               class="ml-3.5 font-medium text-white transition-opacity group-[.side-menu--collapsed]:xl:opacity-0 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100"
+            >
+               HURRICANE
+            </div>
+         </a>
+         <a
+            href=""
+            @click="toggleCompactMenu"
+            class="3xl:flex ml-auto hidden h-[20px] w-[20px] items-center justify-center rounded-full border border-white/40 text-white transition-[opacity,transform] hover:bg-white/5 group-[.side-menu--collapsed]:xl:rotate-180 group-[.side-menu--collapsed]:xl:opacity-0 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100"
+         >
+            <Icon
+               name="lucide:arrow-left"
+               class="h-3.5 w-3.5 stroke-[1.3]"
+            />
+         </a>
+         <div class="flex items-center gap-1 xl:hidden">
+            <a
+               href=""
+               @click.prevent="sideMenu.activeMobileMenu = true"
+               class="rounded-full p-2 hover:bg-white/5"
+            >
+               <Icon
+                  name="lucide:align-justify"
+                  class="h-[18px] w-[18px] text-white"
+               />
+            </a>
+         </div>
+      </div>
+      <div
+         class="absolute inset-x-0 h-full pl-[84px] transition-[padding] duration-100 xl:-ml-2.5 xl:pl-[275px] group-[.side-menu--collapsed]:xl:pl-[100px]"
+      >
+         <div class="flex h-full w-full items-center px-5">
+            <!-- SECTION: Breadcrumb -->
+            <!-- !SECTION: Breadcrumb -->
+            <!-- SECTION: Notification & User Menu -->
+            <div class="flex flex-1 items-center">
+               <div class="ml-auto flex items-center gap-1">
+                  <a
+                     href=""
+                     class="rounded-full p-2 hover:bg-white/5"
+                     @click.prevent="requestFullScreen"
+                  >
+                     <Icon
+                        name="lucide:expand"
+                        class="h-[18px] w-[18px] text-white"
+                     />
+                  </a>
+               </div>
+            </div>
+            <!-- !SECTION: Notification & User Menu -->
+         </div>
+      </div>
+   </div>
+</template>

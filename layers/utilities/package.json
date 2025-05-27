@@ -1,0 +1,24 @@
+{
+  "name": "utilities",
+  "type": "module",
+  "version": "0.0.1",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "clean": "rimraf .nuxt .output node_modules"
+  },
+  "devDependencies": {
+    "@vueuse/core": "^13.2.0",
+    "@vueuse/nuxt": "^13.2.0",
+    "dayjs-nuxt": "^2.1.11",
+    "nuxt": "^3.17.3",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "vue": "latest"
+  },
+  "dependencies": {
+    "@vueuse/integrations": "^13.2.0",
+    "universal-cookie": "^8.0.1",
+    "yup": "^1.6.1",
+    "yup-locales": "^1.2.28"
+  }
+}

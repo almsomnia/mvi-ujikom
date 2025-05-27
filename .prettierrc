@@ -1,0 +1,9 @@
+{
+   "semi": false,
+   "trailingComma": "es5",
+   "arrowParens": "always",
+   "printWidth": 80,
+   "singleAttributePerLine": true,
+   "plugins": ["prettier-plugin-tailwindcss"],
+   "tailwindConfig": "./layers/core-ui/tailwind.config.ts"
+}
