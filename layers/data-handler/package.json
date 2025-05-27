@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "main": "./nuxt.config.ts",
   "scripts": {
+    "db": "pnpm dlx sequelize-cli",
     "clean": "rimraf .nuxt .output node_modules"
   },
   "devDependencies": {

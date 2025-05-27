@@ -6,7 +6,8 @@
     "dev": "pnpm --filter=app dev",
     "build": "pnpm --filter=app build",
     "clean:all": "pnpm -r clean && rimraf node_modules",
-    "format": "pnpm dlx prettier --write"
+    "format": "pnpm dlx prettier --write",
+    "db": "pnpm --filter=data-handler db"
   },
   "keywords": [],
   "author": {
