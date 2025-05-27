@@ -20,110 +20,110 @@ Doctor.hasOne(User, {
 })
 User.belongsTo(Doctor, {
    foreignKey: "refId",
-   constraints: false
+   constraints: false,
 })
 
 Nurse.hasOne(User, {
    foreignKey: "refId",
    constraints: false,
-   scope: { refType: "nurse" }
+   scope: { refType: "nurse" },
 })
 User.belongsTo(Nurse, {
    foreignKey: "refId",
-   constraints: false
+   constraints: false,
 })
 
 FrontOffice.hasOne(User, {
    foreignKey: "refId",
    constraints: false,
-   scope: { refType: "frontOffice" }
+   scope: { refType: "frontOffice" },
 })
 User.belongsTo(FrontOffice, {
    foreignKey: "refId",
-   constraints: false
+   constraints: false,
 })
 
 Pharmacist.hasOne(User, {
    foreignKey: "refId",
    constraints: false,
-   scope: { refType: "pharmacist" }
+   scope: { refType: "pharmacist" },
 })
 User.belongsTo(Pharmacist, {
    foreignKey: "refId",
-   constraints: false
+   constraints: false,
 })
 // !SECTION: User polymorphism relationships
 
 Patient.hasMany(MedicalRecord, {
    foreignKey: "patientId",
-   constraints: true
+   constraints: true,
 })
 MedicalRecord.belongsTo(Patient, {
    foreignKey: "patientId",
-   constraints: true
+   constraints: true,
 })
 
 MedicalRecord.hasOne(Examination, {
    foreignKey: "medicalRecordId",
-   constraints: true
+   constraints: true,
 })
 Examination.belongsTo(MedicalRecord, {
    foreignKey: "medicalRecordId",
-   constraints: true
+   constraints: true,
 })
 
 MedicalRecord.hasOne(Diagnose, {
    foreignKey: "medicalRecordId",
-   constraints: true
+   constraints: true,
 })
 Diagnose.belongsTo(MedicalRecord, {
    foreignKey: "medicalRecordId",
-   constraints: true
+   constraints: true,
 })
 
 MedicalRecord.hasMany(Prescription, {
    foreignKey: "medicalRecordId",
-   constraints: true
+   constraints: true,
 })
 Prescription.belongsTo(MedicalRecord, {
    foreignKey: "medicalRecordId",
-   constraints: true
+   constraints: true,
 })
 
 Icd.hasMany(Diagnose, {
    foreignKey: "icdId",
-   constraints: true
+   constraints: true,
 })
 Diagnose.belongsTo(Icd, {
    foreignKey: "icdId",
-   constraints: true
+   constraints: true,
 })
 
 Medicine.hasMany(Prescription, {
    foreignKey: "medicineId",
-   constraints: true
+   constraints: true,
 })
 Prescription.belongsTo(Medicine, {
    foreignKey: "medicineId",
-   constraints: true
+   constraints: true,
 })
 
 Prescription.hasMany(MedicineTransaction, {
    foreignKey: "prescriptionId",
-   constraints: true
+   constraints: true,
 })
 MedicineTransaction.belongsTo(Prescription, {
    foreignKey: "prescriptionId",
-   constraints: true
+   constraints: true,
 })
 
 Medicine.hasMany(MedicineTransaction, {
    foreignKey: "medicineId",
-   constraints: true
+   constraints: true,
 })
 MedicineTransaction.belongsTo(Medicine, {
    foreignKey: "medicineId",
-   constraints: true
+   constraints: true,
 })
 
 export {
@@ -139,5 +139,5 @@ export {
    Diagnose,
    Prescription,
    Icd,
-   MedicineTransaction
+   MedicineTransaction,
 }

@@ -30,6 +30,7 @@
     "@primeuix/themes": "^1.1.1",
     "@primevue/forms": "^4.3.4",
     "pinia": "^3.0.2",
+    "pinia-plugin-persistedstate": "^4.3.0",
     "primevue": "^4.3.4",
     "simplebar": "^6.3.0",
     "tailwindcss": "^4.1.5",

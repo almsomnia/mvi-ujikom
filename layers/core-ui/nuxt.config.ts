@@ -18,7 +18,8 @@ export default defineNuxtConfig({
       "@primevue/nuxt-module",
       "@pinia/nuxt",
       "@nuxt/icon",
-      "@nuxt/fonts"
+      "@nuxt/fonts",
+      "pinia-plugin-persistedstate/nuxt",
    ],
    components: [
       {

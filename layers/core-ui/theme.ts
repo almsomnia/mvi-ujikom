@@ -4,6 +4,6 @@ import { palette } from "@primeuix/themes"
 
 export const preset = definePreset(Aura, {
    semantic: {
-      primary: palette('{emerald}')
+      primary: palette('{rose}')
    }
 })

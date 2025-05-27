@@ -40,6 +40,43 @@ const User = connection.define(
             exclude: ["password"],
          },
       },
+      hooks: {
+         afterFind: (_result) => {
+            const result = Array.isArray(_result) ? _result : [_result]
+
+            for (const instance of result) {
+               if (
+                  instance.refType === "doctor" &&
+                  instance.Doctor !== undefined
+               ) {
+                  instance.dataValues.ref = instance.Doctor
+                  delete instance.Doctor
+                  delete instance.dataValues.Doctor
+               } else if (
+                  instance.refType === "nurse" &&
+                  instance.Nurse !== undefined
+               ) {
+                  instance.dataValues.ref = instance.Nurse
+                  delete instance.Nurse
+                  delete instance.dataValues.Nurse
+               } else if (
+                  instance.refType === "frontOffice" &&
+                  instance.FrontOffice !== undefined
+               ) {
+                  instance.dataValues.ref = instance.FrontOffice
+                  delete instance.FrontOffice
+                  delete instance.dataValues.FrontOffice
+               } else if (
+                  instance.refType === "pharmacist" &&
+                  instance.Pharmacist !== undefined
+               ) {
+                  instance.dataValues.ref = instance.Pharmacist
+                  delete instance.Pharmacist
+                  delete instance.dataValues.Pharmacist
+               }
+            }
+         },
+      },
    }
 )
 
