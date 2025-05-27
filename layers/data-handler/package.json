@@ -8,12 +8,14 @@
     "clean": "rimraf .nuxt .output node_modules"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "nuxt": "^3.17.4",
     "sequelize-cli": "^6.6.3",
     "typescript": "^5.8.3",
     "vue": "latest"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
   }
