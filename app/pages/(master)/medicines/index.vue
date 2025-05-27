@@ -6,8 +6,8 @@ const query = ref({
 
 const columns = [
    { header: "Name", field: "name" },
-   { header: "Satuan", field: "unit" },
-   { header: "Harga", field: "price" },
+   { header: "Unit", field: "unit" },
+   { header: "Price", field: "price" },
    { header: "Updated at", field: "updatedAt" },
 ]
 
@@ -30,7 +30,7 @@ const formLoading = shallowRef(false)
 const appStore = useAppStore()
 function onNewMedicine() {
    appStore.showDialog(
-      "Obat Baru",
+      "New Medicine",
       h(resolveComponent("FormMedicine"), {
          loading: formLoading.value,
          onSubmit: async (

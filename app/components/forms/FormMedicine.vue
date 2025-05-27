@@ -28,7 +28,7 @@ async function onSubmit() {
       class="flex flex-col gap-4"
    >
       <AppFormField
-         label="Nama Obat"
+         label="Medicine Name"
          required
          :error="error.name"
       >
@@ -40,7 +40,7 @@ async function onSubmit() {
          />
       </AppFormField>
       <AppFormField
-         label="Satuan"
+         label="Medicine Unit"
          required
          :error="error.unit"
       >
@@ -52,7 +52,7 @@ async function onSubmit() {
          />
       </AppFormField>
       <AppFormField
-         label="Harga"
+         label="Medicine Price"
          required
          :error="error.price"
       >
