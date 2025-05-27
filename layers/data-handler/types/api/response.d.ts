@@ -7,4 +7,11 @@ declare namespace API {
       }
       data: T
    }
+
+   type Pagination<T> = {
+      page: number
+      perPage: number
+      total: number
+      data: T[]
+   }
 }
