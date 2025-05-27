@@ -32,7 +32,33 @@ const mrColumns = [
    { header: "Actions", field: "actions" },
 ]
 
-function onNew() {}
+const appStore = useAppStore()
+const formLoading = shallowRef(false)
+function onNewExamination() {
+   appStore.showDialog(
+      "New Examination",
+      h(resolveComponent("FormExamination"), {
+         loading: formLoading.value,
+         patientId: Number(patientId),
+         onSubmit: async (
+            data: InferSchema<ReturnType<typeof $examinationSchema>["create"]>
+         ) => {
+            formLoading.value = true
+            const result = await $fetch("/api/examinations", {
+               method: "post",
+               body: data,
+            })
+            appStore.notify("success", "Success", result.meta.message)
+            appStore.closeDialog()
+            formLoading.value = false
+            fetchMedicalRecords()
+         },
+      }),
+      {
+         width: "600px",
+      }
+   )
+}
 </script>
 
 <template>
@@ -55,7 +81,7 @@ function onNew() {}
                   <div class="flex items-center justify-end">
                      <Button
                         label="Examination"
-                        @click="onNew"
+                        @click="onNewExamination"
                      >
                         <template #icon>
                            <Icon name="lucide:plus" />
@@ -63,18 +89,30 @@ function onNew() {}
                      </Button>
                   </div>
                </template>
-               <!-- <template #row.actions="{ row }">
+               <template #row.visitDate="{ row }">
+                  {{ $formatDate((row as any).visitDate) }}
+               </template>
+               <template #row.actions="{ row }">
                   <div class="flex items-center gap-4">
                      <Button
                         variant="text"
-                        @click="navigateTo(`/patients/${(row as any).id}`)"
+                        v-tooltip="'Diagnose'"
                      >
                         <template #icon>
-                           <Icon name="lucide:eye" />
+                           <Icon name="la:diagnoses" />
+                        </template>
+                     </Button>
+                     <Button
+                        variant="text"
+                        severity="success"
+                        v-tooltip="'Medicine Checkout'"
+                     >
+                        <template #icon>
+                           <Icon name="game-icons:medicines" />
                         </template>
                      </Button>
                   </div>
-               </template> -->
+               </template>
             </AppDataTable>
          </template>
       </Card>
