@@ -10,6 +10,7 @@ const columns = [
    { header: "Identity No", field: "identityNumber" },
    { header: "Phone No", field: "phoneNumber" },
    { header: "Gender", field: "gender" },
+   { header: "Actions", field: "actions" },
 ]
 
 const { data, status, refresh } = await useLazyFetch("/api/patients", {
@@ -81,6 +82,18 @@ function onNew() {
 
             <template #row.gender="{ row }">
                {{ $resolveGender((row as any).gender) }}
+            </template>
+            <template #row.actions="{ row }">
+               <div class="flex items-center gap-4">
+                  <Button
+                     variant="text"
+                     @click="navigateTo(`/patients/${(row as any).id}`)"
+                  >
+                     <template #icon>
+                        <Icon name="lucide:eye" />
+                     </template>
+                  </Button>
+               </div>
             </template>
          </AppDataTable>
       </template>
