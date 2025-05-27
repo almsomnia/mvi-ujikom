@@ -1,16 +1,16 @@
 export function $resolveGender(
-   gender: HintedString<"L" | "P">,
+   gender: HintedString<"M" | "F">,
    toIcon?: boolean
 ) {
    switch (gender) {
-      case "L":
+      case "M":
          return toIcon
             ? h(resolveComponent("Icon"), { name: "ion:male" })
-            : "Laki-laki"
-      case "P":
+            : "Male"
+      case "F":
          return toIcon
             ? h(resolveComponent("Icon"), { name: "ion:female" })
-            : "Perempuan"
+            : "Female"
       default:
          return "-"
    }

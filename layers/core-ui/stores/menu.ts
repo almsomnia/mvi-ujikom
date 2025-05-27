@@ -6,6 +6,12 @@ export const useMenuStore = defineStore("menu", () => {
          pageName: "index",
          title: "Home",
       },
+      "Patients",
+      {
+         icon: "lucide:users",
+         pageName: "patients",
+         title: "Patients"
+      },
       "Master Data",
       {
          icon: "lucide:database",

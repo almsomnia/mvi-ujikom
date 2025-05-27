@@ -18,6 +18,10 @@ const MedicalRecord = connection.define(
          type: DataTypes.DATE,
          allowNull: false,
       },
+      status: {
+         type: DataTypes.STRING,
+         allowNull: false
+      },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
    },
