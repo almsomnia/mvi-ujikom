@@ -59,6 +59,21 @@ function onNewExamination() {
       }
    )
 }
+
+function onNewDiagnose(medicalRecordId: number) {
+   appStore.showDialog(
+      "New Diagnose",
+      h(resolveComponent("FormDiagnose"), {
+         loading: formLoading.value,
+         medicalRecordId,
+      }, {
+         side: () => h(resolveComponent("FormPrescription"), { class: "flex-1" })
+      }),
+      {
+         width: "98%"
+      }
+   )
+}
 </script>
 
 <template>
@@ -97,6 +112,7 @@ function onNewExamination() {
                      <Button
                         variant="text"
                         v-tooltip="'Diagnose'"
+                        @click="onNewDiagnose((row as any).id)"
                      >
                         <template #icon>
                            <Icon name="la:diagnoses" />
