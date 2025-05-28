@@ -4,6 +4,23 @@ const props = defineProps<{
 }>()
 
 const sideMenu = useSideMenuStore()
+const authStore = useAuthStore()
+const menu = useTemplateRef('menu')
+const menuItems = [
+   {
+      label: `Role: ${authStore.getUser()?.refType}`,
+      items: [
+         { label: "Switch Role", command: () => useAppStore().showDialog(
+            "Switch Role",
+            h(resolveComponent("AppRoleSwitcher")),
+            { width: '600px' }
+         ) }
+      ]
+   }
+]
+function toggleMenu(event: Event) {
+   menu.value?.toggle(event)
+}
 </script>
 
 <template>
@@ -53,6 +70,22 @@ const sideMenu = useSideMenuStore()
                         class="h-[18px] w-[18px]"
                      />
                   </a>
+                  <Button
+                     :label="authStore.getUser()?.name"
+                     severity="secondary"
+                     variant="text"
+                     @click="toggleMenu"
+                     icon-pos="right"
+                  >
+                     <template #icon>
+                        <Icon name="lucide:chevron-down" />
+                     </template>
+                  </Button>
+                  <Menu
+                     ref="menu"
+                     :model="menuItems"
+                     popup
+                  />
                </div>
             </div>
             <!-- !SECTION: Notification & User Menu -->
