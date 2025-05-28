@@ -134,10 +134,18 @@ const authStore = useAuthStore()
                   </div>
                </template>
                <template #row.visitDate="{ row }">
-                  {{ $formatDate((row as any).visitDate) }}
+                  {{ $formatDate((row as any).visitDate, "YYYY-MM-DD HH:mm") }}
                </template>
                <template #row.actions="{ row }">
                   <div class="flex items-center gap-4">
+                     <Button
+                        variant="text"
+                        @click="navigateTo(`/medical-records/${(row as any).id}`)"
+                     >
+                        <template #icon>
+                           <Icon name="lucide:eye" />
+                        </template>
+                     </Button>
                      <Button
                         v-if="authStore.getUser()?.refType == 'doctor'"
                         variant="text"

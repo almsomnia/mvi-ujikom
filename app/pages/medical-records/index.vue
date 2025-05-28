@@ -99,7 +99,7 @@ async function onDetails(data: any) {
             </template>
 
             <template #row.visitDate="{ row }">
-               {{ $formatDate((row as any).visitDate) }}
+               {{ $formatDate((row as any).visitDate, "YYYY-MM-DD HH:mm") }}
             </template>
             <template #row.actions="{ row }">
                <div class="flex items-center gap-4">
