@@ -99,6 +99,8 @@ function onNewPrescription(medicalRecordId: number) {
       }
    )
 }
+
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -120,6 +122,7 @@ function onNewPrescription(medicalRecordId: number) {
                <template #header>
                   <div class="flex items-center justify-end">
                      <Button
+                        v-if="authStore.getUser()?.refType == 'nurse'"
                         label="Examination"
                         @click="onNewExamination"
                      >
@@ -135,8 +138,10 @@ function onNewPrescription(medicalRecordId: number) {
                <template #row.actions="{ row }">
                   <div class="flex items-center gap-4">
                      <Button
+                        v-if="authStore.getUser()?.refType == 'doctor'"
                         variant="text"
                         v-tooltip="'Diagnose'"
+                        :disabled="(row as any).status !== 'WAITING_FOR_DIAGNOSIS'"
                         @click="onNewDiagnose((row as any).id)"
                      >
                         <template #icon>
@@ -144,6 +149,7 @@ function onNewPrescription(medicalRecordId: number) {
                         </template>
                      </Button>
                      <Button
+                        v-if="authStore.getUser()?.refType == 'pharmacist'"
                         variant="text"
                         severity="success"
                         v-tooltip="'Prescription'"

@@ -84,7 +84,7 @@ onMounted(() => {
             <div
                class="ml-3.5 font-medium transition-opacity group-[.side-menu--collapsed]:xl:opacity-0 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100"
             >
-               SHURIKEN
+               Klinik
             </div>
          </a>
          <a
@@ -116,7 +116,7 @@ onMounted(() => {
                   {{ menu }}
                </li>
                <li
-                  v-else
+                  v-else-if="typeof menu !== 'string' && !menu.ignore"
                   :key="menuKey"
                >
                   <a

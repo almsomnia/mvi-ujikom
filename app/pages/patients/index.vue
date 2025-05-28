@@ -54,6 +54,8 @@ function onNew() {
       }
    )
 }
+
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -70,6 +72,7 @@ function onNew() {
             <template #header>
                <div class="flex items-center justify-end">
                   <Button
+                     v-if="authStore.getUser()?.refType == 'frontOffice'"
                      label="Patient"
                      @click="onNew"
                   >

@@ -20,6 +20,7 @@ export const useMenuStore = defineStore("menu", () => {
          icon: "lucide:database",
          pageName: "medicines",
          title: "Medicines",
+         ignore: !['pharmacist'].includes(useAuthStore().getUser()?.refType as string)
       }
    ])
 

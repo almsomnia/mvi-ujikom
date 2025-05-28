@@ -5,6 +5,7 @@ declare interface Menu {
    pageName?: string
    subMenu?: Menu[]
    ignore?: boolean
+   role?: string[]
 }
 
 declare interface MenuState {
