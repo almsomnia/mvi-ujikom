@@ -1,7 +1,7 @@
 ## Prerequisites
 
-- Node.js v20
-- pnpm v10
+- Node.js ^20.19.1
+- pnpm ^10.5.2
 
 ## Installation
 
