@@ -63,14 +63,35 @@ function onNewExamination() {
 function onNewDiagnose(medicalRecordId: number) {
    appStore.showDialog(
       "New Diagnose",
-      h(resolveComponent("FormDiagnose"), {
-         loading: formLoading.value,
-         medicalRecordId,
-      }, {
-         side: () => h(resolveComponent("FormPrescription"), { class: "flex-1" })
-      }),
+      h(
+         resolveComponent("FormDiagnose"),
+         {
+            loading: formLoading.value,
+            medicalRecordId,
+            onSubmit: async (
+               values: InferSchema<ReturnType<typeof $diagnoseSchema>["create"]>
+            ) => {
+               formLoading.value = true
+               const result = await $fetch("/api/diagnoses", {
+                  method: "post",
+                  body: values,
+               })
+               appStore.notify("success", "Success", result.meta.message)
+               formLoading.value = false
+               fetchMedicalRecords()
+            },
+         },
+         {
+            append: () =>
+               h(resolveComponent("SectionPrescriptionForm"), {
+                  class: "flex-1 place-content-baseline",
+                  medicalRecordId,
+                  title: "Prescriptions",
+               }),
+         }
+      ),
       {
-         width: "98%"
+         width: "98%",
       }
    )
 }

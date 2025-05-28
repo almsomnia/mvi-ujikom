@@ -2,6 +2,7 @@
 const props = defineProps<{
    loading?: boolean
    medicalRecordId: number
+   hideCancelBtn?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -9,6 +10,7 @@ const emit = defineEmits<{
       e: "submit",
       data: InferSchema<ReturnType<typeof $prescriptionSchema>["create"]>
    ): void
+   (e: "cancel"): void
 }>()
 
 const {
@@ -16,6 +18,7 @@ const {
    error,
    loading: formLoading,
    submit,
+   reset: resetForm
 } = useForm(
    {
       medicalRecordId: props.medicalRecordId,
@@ -46,6 +49,11 @@ async function onSubmit() {
    await submit((values) => {
       emit("submit", values)
    })
+}
+
+function onCancel() {
+   resetForm()
+   emit("cancel")
 }
 </script>
 
@@ -155,6 +163,13 @@ async function onSubmit() {
             type="submit"
             label="Submit"
             :loading="loading"
+         />
+         <Button
+            v-if="!hideCancelBtn"
+            label="Cancel"
+            severity="secondary"
+            :disabled="loading"
+            @click="onCancel"
          />
       </div>
    </form>
