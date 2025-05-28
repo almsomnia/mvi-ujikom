@@ -1,75 +1,33 @@
-# Nuxt Minimal Starter
+## Prerequisites
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+- Node.js v20
+- pnpm v10
 
-## Setup
-
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Installation
 
 ```bash
-# npm
-npm run dev
+# Install dependencies
+pnpm i
 
-# pnpm
+# Running
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+## Authentication
 
-Build the application for production:
+- Email: `user@example.com`
+- Password: `password`
 
-```bash
-# npm
-npm run build
+## Managing User Role
 
-# pnpm
-pnpm build
+User role can be changed via user dropdown on the top right of the page.
 
-# yarn
-yarn build
+Available roles:
+- doctor
+- nurse
+- frontOffice
+- pharmacist
 
-# bun
-bun run build
-```
+## Database Location
 
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+`./layers/data-handler/server/utils/db/db.sqlite`
