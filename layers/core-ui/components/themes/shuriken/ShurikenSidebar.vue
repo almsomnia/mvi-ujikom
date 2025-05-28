@@ -84,7 +84,7 @@ onMounted(() => {
             <div
                class="ml-3.5 font-medium transition-opacity group-[.side-menu--collapsed]:xl:opacity-0 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100"
             >
-               Klinik
+               Clinic
             </div>
          </a>
          <a

@@ -46,6 +46,7 @@ function onNewDiagnose(medicalRecordId: number) {
             })
             appStore.notify("success", "Success", result.meta.message)
             formLoading.value = false
+            appStore.closeDialog()
             refresh()
          },
       }),

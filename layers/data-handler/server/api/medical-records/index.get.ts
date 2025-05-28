@@ -1,3 +1,5 @@
+import { type WhereOptions } from "sequelize"
+
 export default defineEventHandler(async (event) => {
    const query = getQuery(event)
 
@@ -8,17 +10,18 @@ export default defineEventHandler(async (event) => {
 
    const limit = perPage
    const offset = (page - 1) * perPage
+   const where: WhereOptions = {}
+   if (patientId) {
+      where.patientId = patientId
+   }
 
    const model = useDbModel().MedicalRecord
    const data = await model.findAndCountAll({
       limit,
       offset,
-      where: { patientId: patientId ?? true },
+      where,
       include: [
          useDbModel().Patient,
-         // useDbModel().Examination,
-         // useDbModel().Diagnose,
-         // useDbModel().Prescription,
       ],
    })
 

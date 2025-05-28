@@ -17,7 +17,7 @@ async function onSubmit() {
       body: payload
    }).then((res: any) => {
       authStore.user = res.data
-      reloadNuxtApp()
+      window.location.reload()
    })
 }
 
