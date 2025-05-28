@@ -10,12 +10,22 @@ export default defineEventHandler(async (event) => {
    const offset = (page - 1) * perPage
 
    const model = useDbModel().MedicalRecord
-   const data = await model.findAndCountAll({ limit, offset, where: { id: patientId } })
+   const data = await model.findAndCountAll({
+      limit,
+      offset,
+      where: { patientId: patientId ?? true },
+      include: [
+         useDbModel().Patient,
+         // useDbModel().Examination,
+         // useDbModel().Diagnose,
+         // useDbModel().Prescription,
+      ],
+   })
 
    return parseResponse({
       page,
       perPage,
       total: data.count,
-      data: data.rows
+      data: data.rows,
    })
 })

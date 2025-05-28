@@ -1,18 +1,21 @@
 export const useMenuStore = defineStore("menu", () => {
    const value = ref<(Menu | string)[]>([
-      "Home",
+      "",
       {
          icon: "lucide:home",
          pageName: "index",
          title: "Home",
       },
-      "Patients",
+      {
+         icon: "lucide:clipboard",
+         pageName: "medical-records",
+         title: "Medical Records"
+      },
       {
          icon: "lucide:users",
          pageName: "patients",
          title: "Patients"
       },
-      "Master Data",
       {
          icon: "lucide:database",
          pageName: "medicines",

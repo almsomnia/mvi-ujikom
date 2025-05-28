@@ -126,6 +126,24 @@ MedicineTransaction.belongsTo(Medicine, {
    constraints: true,
 })
 
+Examination.belongsTo(Nurse, {
+   foreignKey: "nurseId",
+   constraints: true
+})
+Nurse.hasMany(Examination, {
+   foreignKey: "nurseId",
+   constraints: true
+})
+
+Diagnose.belongsTo(Doctor, {
+   foreignKey: "doctorId",
+   constraints: true
+})
+Doctor.hasMany(Diagnose, {
+   foreignKey: "doctorId",
+   constraints: true
+})
+
 export {
    User,
    Doctor,

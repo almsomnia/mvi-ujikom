@@ -3,6 +3,7 @@ const props = defineProps<{
    medicalRecordId: number
    disableForm?: boolean
    title?: string
+   refreshDataFn?: Function
 }>()
 
 const query = ref({
@@ -30,6 +31,7 @@ async function onPrescriptionSubmit(
    })
    appStore.notify("success", "Success", result.meta.message)
    refresh()
+   props.refreshDataFn?.()
    isFormActive.value = false
    formLoading.value = false
 }
