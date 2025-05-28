@@ -81,17 +81,21 @@ function onNewDiagnose(medicalRecordId: number) {
                fetchMedicalRecords()
             },
          },
-         {
-            append: () =>
-               h(resolveComponent("SectionPrescriptionForm"), {
-                  class: "flex-1 place-content-baseline",
-                  medicalRecordId,
-                  title: "Prescriptions",
-               }),
-         }
       ),
       {
-         width: "98%",
+         width: "50%",
+      }
+   )
+}
+
+function onNewPrescription(medicalRecordId: number) {
+   appStore.showDialog(
+      "New Prescription",
+      h(resolveComponent("SectionPrescriptionForm"), {
+         medicalRecordId,
+      }),
+      {
+         width: "90%"
       }
    )
 }
@@ -142,7 +146,8 @@ function onNewDiagnose(medicalRecordId: number) {
                      <Button
                         variant="text"
                         severity="success"
-                        v-tooltip="'Medicine Checkout'"
+                        v-tooltip="'Prescription'"
+                        @click="onNewPrescription((row as any).id)"
                      >
                         <template #icon>
                            <Icon name="game-icons:medicines" />
